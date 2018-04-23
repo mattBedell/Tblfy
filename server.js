@@ -4,6 +4,7 @@ const http = require('http');
 const app = express();
 
 app.use(express.static('dist'));
+app.use(express.static('public'));
 
 app.get('/proxyimage', (req, res, next) => {
   const { url } = req.query;
@@ -11,26 +12,25 @@ app.get('/proxyimage', (req, res, next) => {
     res.sendStatus(400);
   };
 
-  const preq = http.request(url, client => {
-
-    client.on('data', chunk => {
+  const preq = http.request(`http://${url}`, request => {
+    request.on('data', chunk => {
       res.write(chunk);
     });
 
-    client.on('close', () => {
-      res.writeHead(client.statusCode);
-      res.end();
+    request.on('close', () => {
+      console.log('CLOSED')
     });
 
-    client.on('end', () => {
-      res.writeHead(client.statusCode);
+    request.on('end', () => {
       res.end();
     });
 
   }).on('error', e => {
-    res.writeHead(500);
+    console.log(e);
     res.end();
   });
+
+  preq.end();
 });
 
 app.get('/*', (req, res) => {
