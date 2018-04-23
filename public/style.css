@@ -5,8 +5,40 @@ form {
   justify-content: center;
 }
 
+img {
+  display: none;
+}
+
 input[type='text'] {
   width: 50%;
+}
+
+.pixel {
+
+  width: 1px;
+  height: 1px;
+}
+
+.row {
+  display: flex;
+
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: none;
+}
+
+tr {
+
+}
+
+td {
+  width: 1px!important;
+  height: 1px!important;
+  padding: 0px;
+  border: none;
 }
 
 #err {
