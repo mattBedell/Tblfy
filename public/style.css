@@ -1,0 +1,30 @@
+form {
+  width: 100vw;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+}
+
+input[type='text'] {
+  width: 50%;
+}
+
+#err {
+  display: none;
+  width: 100vw;
+  margin-top: 10px;
+}
+
+#err > div {
+  border: 1px solid #510103;
+  background-color:rgba(183,14,26, .9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#content {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}

@@ -5,15 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="style.css">
-  <title>Blockify</title>
+  <title>Tblfy</title>
 </head>
 <body>
   <form>
-    <input type="text" name="urlInput" value="http://i.imgur.com/tQI6gMb.png"/>
+    <input type="text" name="urlInput" value="http://www.writeups.org/wp-content/uploads/Tealc-Stargate-Christopher-Judge-d.jpg" onclick="this.select()"/>
     <input name="submit" type="submit"/>
   </form>
-  <img />
-  <canvas></canvas>
-  <script src="script.js"></script>
+  <div id="err">
+    <div>Could not find image. Please try a different url.</div>
+  </div>
+  <div id="content">
+    <img />
+    <canvas></canvas>
+    <script src="script.js"></script>
+  </div>
 </body>
 </html>

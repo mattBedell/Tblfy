@@ -27,7 +27,7 @@ app.get('/proxyimage', (req, res, next) => {
 
   }).on('error', e => {
     console.log(e);
-    res.end();
+    res.sendStatus(400);
   });
 
   preq.end();
