@@ -69,33 +69,29 @@ function makeTableImg(pixelData, width, height) {
     table.style.width = `${width}px`;
     table.style.height = `${height}px`;
   
-    let pixelIndex = 0;
-  
     let row = document.createElement('tr');
     row.setAttribute('class', 'row');
 
-    let rowIndex = 0;
     for (let i = 0; i < pixelData.length; i+=4) {
 
       if (i % (width * 4) === 0) {
-        rowIndex += 1;
         table.appendChild(row);
         row = document.createElement('tr');
         row.setAttribute('class', 'row');
 
-        if (Math.floor((i / (width * 4)* 100) / height) % 25 === 0) {
-          console.log(`${Math.floor((i / (width * 4)* 100) / height)}%`);
+        if (Math.floor((i / (width * 4) * 100) / height) % 25 === 0) {
+          console.log(`${Math.floor((i / (width * 4) * 100) / height)}%`);
         }
       }
 
       const pixel = document.createElement('td');
       pixel.setAttribute('class', 'pixel');
   
-      const color = `rgba(${pixelData[pixelIndex]}, ${pixelData[pixelIndex + 1]}, ${pixelData[pixelIndex + 2]}, ${pixelData[pixelIndex + 3]})`;
+      const color = `rgba(${pixelData[i]}, ${pixelData[i + 1]}, ${pixelData[i + 2]}, ${pixelData[i + 3]})`;
       pixel.style.backgroundColor = color;
       row.appendChild(pixel);
-      pixelIndex += 4;
     }
+
     console.log('Built table...')
     resolve(table)
   }).then(table => {
