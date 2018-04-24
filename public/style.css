@@ -30,15 +30,8 @@ table {
   border: none;
 }
 
-tr {
-
-}
-
 td {
-  width: 1px!important;
-  height: 1px!important;
   padding: 0px;
-  border: none;
 }
 
 #err {
