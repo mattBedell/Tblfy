@@ -40,8 +40,12 @@ td {
   margin-top: 10px;
 }
 
-#loading {
+#message {
   background-color: lightgreen;
+}
+
+#error {
+  background-color: red;
 }
 
 .flex-container {
