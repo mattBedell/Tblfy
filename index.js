@@ -1,17 +1,20 @@
 const urlForm = document.querySelector('form');
 const img = document.querySelector('img');
 const canvas = document.querySelector('canvas');
-const errEl = document.querySelector('#err');
+const content = document.querySelector('#content');
+const errEl = document.querySelector('#error');
+const messageEl = document.querySelector('#loading');
 
 img.onload = () => {
-  canvas.width = img.width;
-  canvas.height = img.height;
-  importImageIntoCanvas(img);
+  importImageIntoCanvas(img, img.width, img.height);
+  messageEl.classList.add('hidden');
 }
 
 urlForm.addEventListener('submit', e => {
   e.preventDefault();
-  errEl.style.display = 'none';
+  messageEl.classList.remove('hidden');
+  errEl.classList.add('hidden');
+
 
   let inputUrl = e.target.urlInput.value.replace(/^.*\:\/\//, '');
 
@@ -28,22 +31,22 @@ urlForm.addEventListener('submit', e => {
     img.src = url
   })
   .catch(e => {
-    errEl.style.display = 'inherit';
+    errEl.classList.remove('hidden');
   });
 });
 
-function importImageIntoCanvas(img) {
+function importImageIntoCanvas(img, width, height) {
   const ctx = canvas.getContext('2d');
+  canvas.width = img.width;
+  canvas.height = img.height;
   ctx.drawImage(img, 0, 0);
-  const { left, top, width, height } = canvas.getBoundingClientRect();
 
   let data = ctx.getImageData(0, 0, width, height).data;
+  
   makeTableImg(data, width, height);
-
 }
 
 function makeTableImg(pixelData, width, height) {
-  console.log(width);
   const numY = (pixelData.length / 4) / width;
   const numX = (pixelData.length /4) / height;
 
@@ -75,25 +78,5 @@ function makeTableImg(pixelData, width, height) {
     pixelIndex += 4;
   }
 
-  document.body.appendChild(table);
+  content.appendChild(table);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-urlForm.submit.click();

@@ -8,19 +8,23 @@
   <title>Tblfy</title>
 </head>
 <body>
+  <header class="flex-container">
+    <h3>Enter an image URL and it will be converted to a table (maybe)</h3>
+    <p> Not responsible for computer fires as a result of using this tool.</p>
+  </header>
   <form>
     <input type="text" name="urlInput" value="http://www.writeups.org/wp-content/uploads/Tealc-Stargate-Christopher-Judge-d.jpg" onclick="this.select()"/>
     <input name="submit" type="submit"/>
   </form>
-  <div id="err">
-    <div>Could not find image. Please try a different url.</div>
+  <div id="messages">
+    <div id="error" class="hidden">Could not find image. Please try a different url.</div>
+    <div id="loading" class="hidden">Loading image and making the table. This will take awhile...</div>
   </div>
-  <div id="content">
+  <div class="flex-container" id="content">
     <img />
     <canvas></canvas>
     <script src="script.js"></script>
+    <table></table>
   </div>
-  <table>
-  </table>
 </body>
 </html>
